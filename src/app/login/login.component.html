@@ -1,0 +1,40 @@
+<div class="a">
+<p style="text-align: center">Login</p>
+<form [formGroup]="login" autocomplete="on" (ngSubmit)="login.valid" novalidate>
+
+
+        <label>
+                Username :
+    
+                <input type="text" id="name" formControlName="name" class="form-control" required>
+                <span *ngIf="login.get('name').errors &&
+                        (login.get('name').touched || login.get('name').dirty)">
+                    <span *ngIf="login.get('name').errors.required"><br>
+                        <p>name required.</p>
+                    </span>
+                
+                </span>
+            </label><br><br>
+
+
+            <label>
+                    Password :
+        
+                    <input type="text" id="pswd" formControlName="pswd" class="form-control" required>
+                    <span *ngIf="login.get('pswd').errors &&
+                            (login.get('pswd').touched || login.get('pswd').dirty)">
+                        <span *ngIf="login.get('pswd').errors.required"><br>
+                            <p>name required.</p>
+                        </span>
+                    
+                    </span>
+                </label><br><br>
+                <div align="center">
+                    
+            
+                <button type="submit" (click)="onsubmit()">Login</button> </div>
+                <a routerLink='/pswd'>Change pasword...</a>
+                
+   
+</form>
+</div>

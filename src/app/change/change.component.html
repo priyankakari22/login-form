@@ -1,0 +1,41 @@
+<div class="a">
+  <p style="text-align: center"> Change password</p><br>
+  <form [formGroup]="change" autocomplete="on" (ngSubmit)="change.valid" novalidate>
+
+
+    <label>
+      Old password:
+
+      <input type="text" id='old' formControlName='old' class="form-control" required>
+      <span *ngIf="change.get('old').errors &&
+                        (change.get('old').touched || change.get('old').dirty)">
+        <span *ngIf="change.get('old').errors.required"><br>
+          <p>required.</p>
+        </span>
+        
+      </span>
+    </label><br><br>
+
+    <label>
+      New password:
+      <input type="text" id="new" formControlName="new" class="form-control" required>
+      <span *ngIf="change.get('new').errors && (change.get('new').touched ||
+        change.get('new').dirty)">
+        <span *ngIf="change.get('new').errors.required"><br>
+          <p>required...</p>
+        </span>
+      </span>
+    </label><br><br>
+    <div align=center>
+      <button type="submit" (click)="conform()">confirm</button>
+      <span *ngIf="password == false">
+            <p style="color: crimson">please enter old password</p>
+          </span>
+          <span *ngIf="password == true">
+                <p style="color: rgb(58, 114, 6)">Conformed your new password...</p>
+              </span>
+          
+  
+    </div>
+  </form>
+</div>
