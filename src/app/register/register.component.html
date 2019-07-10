@@ -1,0 +1,109 @@
+<div class="a">
+  <h2 style="text-align: center">Registration Form</h2>
+  <form [formGroup]="registerform" autocomplete="on" (ngSubmit)="registerform.valid" novalidate>
+    <table>
+      <tr>
+        <td><label> Name </label></td>
+        <td> <label>Date Of birth</label> </td>
+      </tr>
+      <tr>
+        <td><input type="text" id="name" formControlName="name" class="form-control" required>
+        </td>
+        <td>
+          <my-date-picker name="dob" id="dob" [options]="myDatePickerOptions" formControlName="dob">
+          </my-date-picker>
+        </td>
+      </tr>
+      <tr>
+        <td><span *ngIf="registerform.get('name').errors && (registerform.get('name').touched ||
+            registerform.get('name').dirty)">
+            <span *ngIf="registerform.get('name').errors.required">
+              <p>required......</p>
+            </span>
+            <span *ngIf="registerform.get('name').errors.pattern">
+              <p>should be alphabets</p>
+            </span>
+          </span></td>
+
+        <td><span *ngIf="registerform.get('dob').errors && (registerform.get('dob').touched ||
+                        registerform.get('dob').dirty)">
+            <span *ngIf="registerform.get('dob').errors.required">
+              <p>required......</p>
+            </span>
+          </span>
+        </td>
+      </tr>
+      <tr>
+        <td><label> Phone Number </label>
+        <td><label> Email: </label></td>
+      </tr>
+
+      <tr>
+        <td><input type="text" id="num" formControlName="num" class="form-control"
+            onkeypress="return event.charCode >= 48 && event.charCode <= 57 " required></td>
+        <td><input type="text" id="email" formControlName="email" class="form-control" required></td>
+      </tr>
+      <tr>
+        <td><span *ngIf="registerform.get('num').errors && (registerform.get('num').touched ||
+        registerform.get('num').dirty)">
+            <span *ngIf="registerform.get('num').errors.required">
+              <p>required..</p>
+            </span>
+            <span *ngIf="registerform.get('num').errors.pattern">
+              <p>invalid..</p>
+            </span>
+          </span>
+        </td>
+        <td><span *ngIf="registerform.get('email').errors && (registerform.get('email').touched ||
+        registerform.get('email').dirty)">
+            <span *ngIf="registerform.get('email').errors.required">
+              <p>required..</p>
+            </span>
+            <span *ngIf="registerform.get('email').errors.pattern">
+              <p>invalid..</p>
+            </span>
+          </span></td>
+      </tr>
+      <tr>
+        <td><label>Gender: </label></td>
+        <td><label>State: </label></td>
+      </tr>
+      <tr>
+        <td>
+          Male:<input type="radio" id="gender" name="gender" value="male" required>
+          Female:<input type="radio" id="gender" name="gender" value="female" required></td>
+        
+        <td>
+          <ng-multiselect-dropdown [placeholder]="'select state'" [data]="states" name="state" formControlName="state"
+            [disabled]="disabled" [settings]="dropdownSettings" (onSelect)="onItemSelect($event)"
+            (onSelectAll)="onSelectAll($event)">
+
+          </ng-multiselect-dropdown>
+          <span *ngIf="registerform.get('state').errors && (registerform.get('state').touched ||
+               registerform.get('state').errors)">
+            <span *ngIf="registerform.get('state').errors.required">
+              <p>required</p>
+            </span>
+          </span>
+
+        </td>
+      </tr>
+
+
+    </table>
+    <br><br>
+    <input type="checkbox" name="check" id="check" formControlName="check" required>
+    I accepted this terms and conditions.<br>
+    <span *ngIf="registerform.get('check').errors && (registerform.get('check').touched ||
+        registerform.get('check').dirty)">
+      <span *ngIf="registerform.get('check').errors.required">
+        <p>required..</p>
+      </span>
+    </span>
+    <br>
+    <div align=center>
+            <button type="submit"  [disabled]="registerform.pristine || registerform.invalid">submit</button>
+    </div>
+  </form>
+
+</div>

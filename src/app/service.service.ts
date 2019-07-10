@@ -7,9 +7,10 @@ export class ServiceService implements OnInit {
   pass = 'priya';
   pas: string;
 
+
   constructor() { }
 
-// tslint:disable-next-line: contextual-lifecycle
+  // tslint:disable-next-line: contextual-lifecycle
   ngOnInit() {
     this.pas = this.pass;
     console.log(this.pas, 'ghfghmf');

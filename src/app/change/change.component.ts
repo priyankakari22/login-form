@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ServiceService } from './../service.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-change',
@@ -8,15 +9,15 @@ import { ServiceService } from './../service.service';
   styleUrls: ['./change.component.scss']
 })
 export class ChangeComponent implements OnInit {
- 
-  constructor(private fb: FormBuilder , private serv: ServiceService) { }
+
+  constructor(private fb: FormBuilder, private serv: ServiceService, private chang: Router) { }
   change: FormGroup;
   oldp: any;
-  password: any ;
+  password: any;
 
   ngOnInit() {
     this.oldp = this.serv;
-    console.log(this.oldp.pass );
+    console.log(this.oldp.pass);
 
     this.change = this.fb.group({
       old: new FormControl({ value: '', disabled: false }, [
@@ -29,14 +30,18 @@ export class ChangeComponent implements OnInit {
   }
   conform() {
 
-    if (this.change.value.old === this.oldp.pass ) {
+    if (this.change.value.old === this.oldp.pass) {
       this.password = true;
+      this.oldp.pass = this.change.value.new;
+      console.log(this.oldp.pass, 'new');
 
-     }   else {
-       this.password = false;
-      }
 
+    } else {
+      this.password = false;
+    }
 
   }
-
+  backtologin() {
+    this.chang.navigate(['login']);
+  }
 }

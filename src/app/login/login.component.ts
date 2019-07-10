@@ -19,7 +19,7 @@ export class LoginComponent implements OnInit {
   login: FormGroup;
 
   data: any;
-// tslint:disable-next-line: comment-format
+  // tslint:disable-next-line: comment-format
   //pass:any="priya"
   password: any = false;
 
@@ -41,7 +41,7 @@ export class LoginComponent implements OnInit {
     this.data = this.login;
     console.log(this.data.value.pswd);
     this.inform = this.service;
-    console.log(this.inform.pass, 'fhhjf' );
+    console.log(this.inform.pass, 'fhhjf');
     if (this.inform.pass === this.data.value.pswd) {
       this.router.navigate(['succuss']);
 

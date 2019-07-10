@@ -4,6 +4,7 @@ import { LoginComponent } from './login/login.component';
 import { ChangeComponent } from'./change/change.component';
 import { SuccessComponent } from './success/success.component';
 import { FailComponent } from './fail/fail.component';
+import { RegisterComponent } from './register/register.component';
 
 const routes: Routes = [
   {
@@ -26,7 +27,11 @@ const routes: Routes = [
     component: FailComponent,
     data: { title: 'fail' }
   },
-  
+  {
+    path: 'register',
+    component: RegisterComponent,
+    data: { title: 'Register' }
+  },
 ];
 
 @NgModule({
